@@ -287,7 +287,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BoardManager
   width: 7
   height: 9
-  cellSize: 90
   gemColors:
   - {r: 0.95, g: 0.3, b: 0.3, a: 1}
   - {r: 0.3, g: 0.65, b: 0.95, a: 1}
@@ -295,8 +294,15 @@ MonoBehaviour:
   - {r: 0.95, g: 0.8, b: 0.2, a: 1}
   - {r: 0.75, g: 0.4, b: 0.9, a: 1}
   - {r: 0.95, g: 0.6, b: 0.2, a: 1}
-  maxMoves: 30
-  targetScore: 500
+  gemPrefabs:
+  - {fileID: 1246776736287166, guid: 41e1e0b1d06cc38418306a3628bd5e69, type: 3}
+  - {fileID: 1246776736287166, guid: 2c935e1dc4dc75b4f88926bf7909cba1, type: 3}
+  - {fileID: 1246776736287166, guid: beb92df0a91097f4394dfcd804ecbb8c, type: 3}
+  - {fileID: 1246776736287166, guid: 3ae63321df3bae340a5eea7d670a1107, type: 3}
+  - {fileID: 1246776736287166, guid: 941b21d3684b6c445b663d613f81624c, type: 3}
+  - {fileID: 1246776736287166, guid: fb63ec074036b0d48b60e17ff052f3c8, type: 3}
+  maxMoves: 25
+  targetScore: 2000
   scoreText: {fileID: 0}
 --- !u!4 &556340755
 Transform:
@@ -397,6 +403,62 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1719648210
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1719648212}
+  - component: {fileID: 1719648211}
+  m_Layer: 0
+  m_Name: VFXManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1719648211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1719648210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 149f9727b8f3e4d5ead9720c62a16584, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VFXManager
+  destroyFX:
+  - {fileID: 6451518072352905350, guid: bc5d94e9bcd95cd44bb5dea40a7e2c6b, type: 3}
+  - {fileID: 1776072094782426, guid: f7f0ead0b01d26f49a6bca80a64696eb, type: 3}
+  - {fileID: 4115709019577207785, guid: 254ee550a4158fe4fb5a74584e5fdddf, type: 3}
+  - {fileID: 6434915658117204056, guid: c321c7b1278b2b24c8161f9efad30cf0, type: 3}
+  - {fileID: 7719553689921444313, guid: c2de07797029d814886dc3dcf52dde9a, type: 3}
+  - {fileID: 215498130359330262, guid: e3e7fde74dd3cea4386f9263ed98cb68, type: 3}
+  bombFX: {fileID: 3813327904679013036, guid: ff47b96b47253e146848897d62cedc5e, type: 3}
+  rocketHFX: {fileID: 1622257832915343429, guid: a5077b08107e2974a948bb4f22794a6c, type: 3}
+  rocketVFX: {fileID: 5958442695298932210, guid: 1787109c56a396648a9a37636e7458eb, type: 3}
+  confettiFX: {fileID: 3931881311120908800, guid: 294b524aaedfc8146b2ccb4ca56e7246, type: 3}
+  fireworkFX: {fileID: 6603000466130926252, guid: cdf6689b659a9cc4eabad1d181ddb928, type: 3}
+--- !u!4 &1719648212
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1719648210}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -404,3 +466,4 @@ SceneRoots:
   - {fileID: 519420032}
   - {fileID: 619394802}
   - {fileID: 556340755}
+  - {fileID: 1719648212}

@@ -27,6 +27,9 @@ MemoryCaptures/
 *.user
 *.userosscache
 *.sln.docstates
+.vscode/
+Assets/Match3 VFX Kit
+Assets/Match3 VFX Kit.meta
 
 # OS
 .DS_Store

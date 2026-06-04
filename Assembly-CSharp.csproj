@@ -48,7 +48,20 @@
     <Analyzer Include="/Applications/Unity/Hub/Editor/6000.4.10f1/Unity.app/Contents/Resources/BuildPipeline/Unity.SourceGenerators/Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets/VFXManager.cs" />
+    <Compile Include="Assets/Match3 VFX Kit/Scripts/RocketMovement.cs" />
+    <Compile Include="Assets/Match3 VFX Kit/Scripts/GridObject.cs" />
+    <Compile Include="Assets/Match3 VFX Kit/Scripts/GridManager.cs" />
+    <Compile Include="Assets/Match3 VFX Kit/Scripts/ReplaceBooster.cs" />
     <Compile Include="Assets/BoardManager.cs" />
+    <Compile Include="Assets/Match3 VFX Kit/Scripts/AutoDestroy.cs" />
+    <Compile Include="Assets/Match3 VFX Kit/Scripts/CopyParticleSettings.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets/Match3 VFX Kit/Shader/Distortion.shader" />
+    <None Include="Assets/Match3 VFX Kit/Shader/AddTrail.shader" />
+    <None Include="Assets/Match3 VFX Kit/Shader/ParticleAdBlend.shader" />
+    <None Include="Assets/Match3 VFX Kit/Shader/ParticleAdd.shader" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
