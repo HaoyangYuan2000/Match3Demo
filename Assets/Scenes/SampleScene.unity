@@ -444,6 +444,8 @@ MonoBehaviour:
   rocketVFX: {fileID: 5958442695298932210, guid: 1787109c56a396648a9a37636e7458eb, type: 3}
   confettiFX: {fileID: 3931881311120908800, guid: 294b524aaedfc8146b2ccb4ca56e7246, type: 3}
   fireworkFX: {fileID: 6603000466130926252, guid: cdf6689b659a9cc4eabad1d181ddb928, type: 3}
+  bombSound: {fileID: 8300000, guid: d9f64e1bddc6eaf46856b5076fc56d2e, type: 3}
+  rocketSound: {fileID: 8300000, guid: bc6db06e22f28b04a8434bbb1574e7a6, type: 3}
 --- !u!4 &1719648212
 Transform:
   m_ObjectHideFlags: 0

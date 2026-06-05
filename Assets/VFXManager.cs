@@ -7,39 +7,51 @@ public class VFXManager : MonoBehaviour
 
     [Header("Gem Destroy FX  (index 0-5 matches gem color index)")]
     public GameObject[] destroyFX = new GameObject[6];
-    // Suggested assignments:
-    // [0] Red    → Chip_Destroy_Red_FX
-    // [1] Blue   → Chip_Destroy_Blue_Root_FX
-    // [2] Green  → Chip_Destroy_Green_FX
-    // [3] Yellow → Chip_Destroy_Orange_FX
-    // [4] Purple → Chip_Destroy_Violet_FX
-    // [5] Orange → Chip_Destroy_Pink_FX
 
     [Header("Power-up FX")]
-    public GameObject bombFX;       // Bomb_Explosion_FX
-    public GameObject rocketHFX;    // RocketHorizontal
-    public GameObject rocketVFX;    // RocketVertical
+    public GameObject bombFX;
+    public GameObject rocketHFX;
+    public GameObject rocketVFX;
 
     [Header("Win FX")]
-    public GameObject confettiFX;   // Confetti_Loop
-    public GameObject fireworkFX;   // Firework
+    public GameObject confettiFX;
+    public GameObject fireworkFX;
 
+    [Header("Sound Effects")]
+    public AudioClip bombSound;     // drag: Explosion006.wav
+    public AudioClip rocketSound;   // drag: Missile010.wav
+    public AudioClip[] popSounds;   // drag all 4 bubble sounds here
+
+    private AudioSource audioSource;
     private readonly List<GameObject> winFXObjects = new List<GameObject>();
 
     void Awake()
     {
         Instance = this;
+        audioSource = gameObject.AddComponent<AudioSource>();
+        audioSource.playOnAwake = false;
     }
 
+    // ── VFX ───────────────────────────────────────────────────
     public void PlayDestroyFX(int colorIndex, Vector3 worldPos)
     {
         if (destroyFX == null || colorIndex < 0 || colorIndex >= destroyFX.Length) return;
         Spawn(destroyFX[colorIndex], worldPos);
+        if (popSounds != null && popSounds.Length > 0)
+            PlaySound(popSounds[Random.Range(0, popSounds.Length)], 0.45f);
     }
 
-    public void PlayBombFX(Vector3 worldPos)    => Spawn(bombFX, worldPos);
+    public void PlayBombFX(Vector3 worldPos)
+    {
+        Spawn(bombFX, worldPos);
+        PlaySound(bombSound, 0.8f);
+    }
+
     public void PlayRocketFX(Vector3 worldPos, bool horizontal)
-        => Spawn(horizontal ? rocketHFX : rocketVFX, worldPos);
+    {
+        Spawn(horizontal ? rocketHFX : rocketVFX, worldPos);
+        PlaySound(rocketSound, 0.7f);
+    }
 
     public void PlayWinFX()
     {
@@ -54,6 +66,7 @@ public class VFXManager : MonoBehaviour
         winFXObjects.Clear();
     }
 
+    // ── Spawn helpers ─────────────────────────────────────────
     void Spawn(GameObject prefab, Vector3 pos)
     {
         if (prefab == null) return;
@@ -68,6 +81,17 @@ public class VFXManager : MonoBehaviour
     GameObject SpawnTracked(GameObject prefab, Vector3 pos)
     {
         if (prefab == null) return null;
-        return Instantiate(prefab, pos, Quaternion.identity);
+        GameObject fx = Instantiate(prefab, pos, Quaternion.identity);
+        foreach (var psr in fx.GetComponentsInChildren<ParticleSystemRenderer>())
+            psr.sortingOrder = 200;
+        return fx;
     }
+
+    // ── Audio ─────────────────────────────────────────────────
+    void PlaySound(AudioClip clip, float volume = 1f)
+    {
+        if (clip == null || audioSource == null) return;
+        audioSource.PlayOneShot(clip, volume);
+    }
+
 }
